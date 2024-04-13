@@ -1,0 +1,32 @@
+CREATE TABLE TB_CONTA
+(
+    ID     INTEGER     NOT NULL,
+    NOME   VARCHAR(50) NOT NULL,
+    LIMITE DECIMAL     NOT NULL,
+    SALDO  DECIMAL     NOT NULL,
+    PRIMARY KEY (ID)
+);
+
+CREATE TABLE TB_TRANSACAO
+(
+    ID            SERIAL      NOT NULL,
+    VALOR         DECIMAL     NOT NULL,
+    TIPO          VARCHAR(1)  NOT NULL,
+    DESCRICAO     VARCHAR(10) NOT NULL,
+    DATA_EXECUCAO TIMESTAMP   NOT NULL,
+    ID_CLIENTE    INTEGER     NOT NULL,
+    PRIMARY KEY (ID),
+    CONSTRAINT FK_CLIENTE FOREIGN KEY (ID_CLIENTE) REFERENCES TB_CONTA (ID)
+);
+
+DO
+$$
+    BEGIN
+        INSERT INTO TB_CONTA(ID, NOME, LIMITE, SALDO)
+        VALUES (1, 'John Doe 1', 100000, 0),
+               (2, 'John Doe 2', 80000, 0),
+               (3, 'John Doe 3', 1000000, 0),
+               (4, 'John Doe 4', 10000000, 0),
+               (5, 'John Doe 5', 500000, 0);
+    END;
+$$;
