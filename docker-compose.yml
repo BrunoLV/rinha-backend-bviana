@@ -64,7 +64,3 @@ services:
         limits:
           cpus: "0.17"
           memory: "10MB"
-
-networks:
-  rinha:
-    driver: custom-driver-1
