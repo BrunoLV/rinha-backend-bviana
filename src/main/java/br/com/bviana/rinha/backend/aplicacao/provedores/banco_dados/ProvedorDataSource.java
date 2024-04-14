@@ -17,11 +17,8 @@ public class ProvedorDataSource {
         config.setUsername(System.getenv("DB_USER"));
         config.setPassword(System.getenv("DB_PASS"));
 
-        config.setMaximumPoolSize(70);
+        config.setMaximumPoolSize(10);
         config.setMinimumIdle(10);
-        config.setConnectionTimeout(10000);
-        config.setIdleTimeout(300000);
-        config.setMaxLifetime(1200000);
 
         config.setConnectionTestQuery("SELECT 1");
         config.addDataSourceProperty("cachePrepStmts", "true");
